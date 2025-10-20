@@ -1,0 +1,29 @@
+/* @theme custom-theme */
+/* custom-theme.css */
+@import 'uncover';
+
+section {
+  font-family: 'Avenir Next','Liberation Sans', sans-serif !important;
+}
+
+h1 {
+  color:red !important;
+}
+
+h3,h4 {
+  text-align: left;
+}
+
+img[alt~="top-right"] {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.tiny {
+  font-size: 0.5em;
+}
+
+.items img {
+  float: left;
+}
