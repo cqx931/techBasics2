@@ -151,13 +151,19 @@ according to this color code how should a 1k 5-band resisotr look like? (brown, 
 ---
 #### Exercise 2: 
 220Ω Resistor
-![width:600px](images/Arduino-LED.png)
+
+<br>
+<br>
+<br>
+<br>
+<br><br><br><br><br>
+
+![bg width:400px](images/Arduino-Blink-LED-schematic.png)
+![bg width:600px](images/Arduino-LED.png)
 
 <!-- if we connect the orange line to 5v from arduino, led is always on -->
 
----
 
-![width:600px](images/Arduino-Blink-LED-schematic.png)
 
 ---
 
@@ -270,11 +276,9 @@ It is the positive supply voltage for an electronic circuit
 - First use the same code as Exercise 4
 ---
 <!-- we can't share one led among them. because led in different colors requires different amount of voltage -->
-![width:700px](images/RGB_schematic_arduino.png)
+![bg width:600px](images/RGB_schematic_arduino.png)
 
----
-
-![width:700px](images/RGB_Arduino.png)
+![bg width:600px](images/RGB_Arduino.png)
 
 ---
 #### Challenge 
