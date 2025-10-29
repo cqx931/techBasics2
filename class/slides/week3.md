@@ -1,7 +1,7 @@
 ---
 title: Technical Basics II
 description: Week 3
-class: 
+class:
 _class:
   - lead
 footer: 28.10.25 | Qianxun Chen | Technical Basics II
@@ -57,7 +57,7 @@ Low - 0V
 ---
 
 ![width:700px](images/pins.png)
-<!-- 
+<!--
 
 TX(transmit), RX(Receive) reserved for serial communicaation, usually we don't use these two pins, you can use these two pins as normal digital pins if no serial communication is needed
 2-13 digital pins + PWM
@@ -90,7 +90,7 @@ Duty cycle: the proportion of "on-time" in each cycle
 
 <!-- Show it with an oscilloscope? -->
 ---
-#### Exercise 1 Fade in/out a LED 
+#### Exercise 1 Fade in/out a LED
 - Connect one LED to a PWM pin (with a 220 resistor)
 - Use analogWrite() to control its brightness
 
@@ -104,8 +104,11 @@ Duty cycle: the proportion of "on-time" in each cycle
 for (int i=0; i <= 255; i += 5) {
 }
 ```
-<!-- 
+<!--
 python for i in range(0, 255)
+
+Stream A: Spend some time with RGB LED function
+
 Break -->
 
 ---
@@ -117,8 +120,8 @@ Break -->
 
 <!-- analog signals: more resolution, slower to process, more sensitive noises
  digital signals, faster and reliable, less sensitive to noises
- 
- So now we want to read some signals with arduino, but in order to know what is happening in this process, we want 
+
+ So now we want to read some signals with arduino, but in order to know what is happening in this process, we want
  -->
 ---
 ### Serial.print()
@@ -134,7 +137,7 @@ void setup() {
 void loop() {
   Serial.println("Hello"); // print with new line
   //Serial.print("Hello"); // print in the same line
-} 
+}
 
 ```
 
@@ -142,7 +145,7 @@ void loop() {
 
 ### Serial Baud Rates
 - Serial baud rates are the number of signal changes per second in a serial communication channel
-- The specific rate must be <b>matched</b> between the transmitting and receiving devices for successful communication. 
+- The specific rate must be <b>matched</b> between the transmitting and receiving devices for successful communication.
 - Most commonly used value for Arduino: 9600 bps
 
 ---
@@ -172,7 +175,7 @@ void loop() {
 - A device that converts an analog signal (voltage) into a digital value
 * You can set the AREF(Analog Reference) pin to sth lower than 5v for higher resolution for low voltage component
 
-<!-- 
+<!--
 10 bit means 0-1023
 If you want a true analog signal from Arduino, you better use a DAC-->
 ---
@@ -192,11 +195,11 @@ If you want a true analog signal from Arduino, you better use a DAC-->
 #### Exercise 3 AnalogRead()
 - Try analogRead() with a potentiometer on A0
 - Print the reading and check it in Serial Plotter
-* Challenge: Dimm a LED with with a pot 
+* Challenge: Dimm a LED with with a pot
   - map()
 ![bg right width:600px](images/pot_c.png)
 
-<!-- 
+<!--
 Try to switch 5v/ground, what does it change?
  -->
 
@@ -215,15 +218,14 @@ Try to switch 5v/ground, what does it change?
 
 ```cpp
 void loop() {
-
   if (Serial.available()) {     // wait for data available
-
     // for strings
     String str = Serial.readString();  
     str.trim();  //  remove any \r \n whitespace at the end of the String
 
     //for int
-    String integer = Serial.parseInt();
+    int integer = Serial.parseInt();
+  }
 }     
 ```
 ---
@@ -239,8 +241,8 @@ void loop() {
 - Measure resistance
 ![bg right width:600px](images/multimeter.jpg)
 
-<!-- com to black cable, mavohm to red cable 
-demonstrate connection mode and voltage mode for battery 
+<!-- com to black cable, mavohm to red cable
+demonstrate connection mode and voltage mode for battery
 -->
 ---
 ### Photoresistor
@@ -275,11 +277,11 @@ resistance 0 -> r1 got 5v
 resistance up -> r1 got less
  -->
 
- 
+
 
 ---
 
-How to calculate the actual resistance 
+How to calculate the actual resistance
 of LDR using ohm's law?
 
 
@@ -287,12 +289,11 @@ of LDR using ohm's law?
 
 ---
 ### Wrap Up
-- AnalogWrite()
-- PWM
-- Serial Monitor
+- analogWrite() & PWM
+- Serial monitor
 - Components: tilt switch, potentiometer, photoresistor
 - Multimeter
-<!-- 
+<!--
 Reference:
 https://www.build-electronic-circuits.com/arduino-light-sensor/
 
