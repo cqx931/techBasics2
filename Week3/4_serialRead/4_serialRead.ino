@@ -1,6 +1,8 @@
 /*
 Use Serial.readString() to control on-board LED
 * use Serial.parseInt() for integer
+  but one needs Serial.read() directly after the parsing to solve the issue with extra 0 
+  // See: https://forum.arduino.cc/t/serial-parseint-extra-zero-problem/522852
 */
 
 int readingValue = 0;
