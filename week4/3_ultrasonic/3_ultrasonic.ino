@@ -13,13 +13,11 @@ int distance;
 void setup() {
   // Start the serial communication
   Serial.begin(9600);
-  
+
   // Define the Trig and Echo pins as Output and Input
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
-  // Define active buzzer as Output
-  pinMode(buzzPin, OUTPUT);
 }
 
 void loop() {
