@@ -197,6 +197,10 @@ sometimes the buttons don't have a good connection with the breadboard
 - Define the note each button can play
 
 ---
+#### Extra Material
+- [How to change the pitch of active buzzer](https://www.youtube.com/watch?v=W5AApP9P-b0&list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP&index=23)
+
+---
 #### Wrap Up
 - Active/Passive Buzzers
 - Ultrasonic Sensors
