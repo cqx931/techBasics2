@@ -6,7 +6,7 @@ _class:
   - lead
 footer: 18.11.25 | Qianxun Chen | Technical Basics II
 _footer: ""
-paginate: true
+paginate: false
 _paginate: false
 theme: uncover
 size: 16:9
@@ -144,7 +144,8 @@ stepper.stop()
 ---
 
 ##### Step 2:
-Add 2 LEDs to your current set up (with 220 ohm resistors). Make red led light up when motor moving anti-clockwise, green led light up when motor moving clockwise. No LED lights up when button is pressed.
+- Add 2 LEDs to your current set up (with 220 ohm resistors). Make red led light up when motor moving CCW, green led light up when motor moving CW. 
+No LED lights up when button is pressed.
 
 ---
 
