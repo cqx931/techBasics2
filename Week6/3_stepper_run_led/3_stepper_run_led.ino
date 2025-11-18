@@ -39,30 +39,31 @@ void setup()
 
 void loop() {
   button = digitalRead(buttonPin);
-  stepsLeft = stepper.getStepsLeft();
-
+  
   if (button) { // if button is not pressed
     stepper.run(); // keep the stepper moving
-  } else { // if button is pressed
-    stepper.stop();
-    digitalWrite(redLedPin, LOW);
-    digitalWrite(greenLedPin, LOW);
-  }
-
-  // if the current move is done...
-  if (stepsLeft == 0){
-    // let's start a new move in the reverse direction
-    moveClockwise = !moveClockwise; // reverse direction
-    stepper.newMove(moveClockwise, stepsPerRevolution/3); // move 120 degrees from current position
-  } else {
-    Serial.println(".");
-    if (!moveClockwise) {
+    // change light color based on direction
+     if (!moveClockwise) {
       digitalWrite(redLedPin, HIGH);
       digitalWrite(greenLedPin, LOW);
     } else {
       digitalWrite(greenLedPin, HIGH);
       digitalWrite(redLedPin, LOW);
     }
+
+  } else { 
+    // if button is pressed
+    stepper.stop();
+    digitalWrite(redLedPin, LOW);
+    digitalWrite(greenLedPin, LOW);
   }
+
+  stepsLeft = stepper.getStepsLeft();
+  // if the current move is done...
+  if (stepsLeft == 0){
+    // let's start a new move in the reverse direction
+    moveClockwise = !moveClockwise; // reverse direction
+    stepper.newMove(moveClockwise, stepsPerRevolution/3); // move 120 degrees from current position
+  } 
 
 }
