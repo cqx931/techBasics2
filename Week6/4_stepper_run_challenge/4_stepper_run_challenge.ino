@@ -16,48 +16,53 @@ bool moveClockwise = true;
 int stepsLeft = 0; // how many steps are left from the current movement
 
 const int buttonPin = 2;
-bool buttonValue =  1;
+bool button = 0;
 
-const int redLEDPin = 3;
-const int redLEDPin = 4;
 void setup()
 {
   // Start serial
   Serial.begin(9600);
- 
+  // set pinMode for button
+  pinMode(buttonPin, INPUT_PULLUP);
+
   // Stepper Setups
   stepper.setRpm(6);  // The default is ~16.25rpm
   // Range: 6RPM - 14RPM when powered from Arduino
   //        2RPM - 24RPM when powered from other resources
   stepper.setTotalSteps(stepsPerRevolution); 
   // move one round
-  stepper.newMove(true, stepsPerRevolution); 
-  pinMode(buttonPin, INPUT_PULLUP);
-  pinMode(redLEDPin, OUTPUT);
-  pinMode(greenLEDPin, OUTPUT);
+  stepper.newMove(moveClockwise, stepsPerRevolution);
 }
 
 void loop() {
-  // this is necessary to keep in the loop with newMove()
+  
+  if (digitalRead(buttonPin)) { // if button is not pressed
 
-  // we can now do other things, like digitalRead()/analogRead() in the loop because newMove doesn't stop the process
-  buttonValue = digitalRead(buttonPin);
+    if (button == 1) { // On button release
+      Serial.println("Resume Movement"); 
+      stepper.newMove(moveClockwise, stepsLeft); 
+      button = 0;
+    }
+    stepper.run(); // keep the stepper moving
+    // let's check how many steps are left in the current move:
+      stepsLeft = stepper.getStepsLeft();
 
-  if (buttonValue) {
+  } else { // if button is pressed
     
-      stepper.run();
-  } else {
-      stepper.stop();
+    if (button == 0) { // On button pressed
+      stepsLeft = stepper.getStepsLeft();
+      stepper.stop(); // this clears stepsLeft to 0
+      button = 1;
+    }  
+    
   }
-  //Serial.println(buttonValue);
 
-  stepsLeft = stepper.getStepsLeft();
   // if the current move is done...
   if (stepsLeft == 0){
-    Serial.println("0");
+    Serial.println("Movement Done"); 
     // let's start a new move in the reverse direction
     moveClockwise = !moveClockwise; // reverse direction
     stepper.newMove(moveClockwise, stepsPerRevolution/3); // move 120 degrees from current position
-  } 
+  }
 
 }

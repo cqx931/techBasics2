@@ -16,48 +16,53 @@ bool moveClockwise = true;
 int stepsLeft = 0; // how many steps are left from the current movement
 
 const int buttonPin = 2;
-bool buttonValue =  1;
+const int redLedPin = 3;
+const int greenLedPin = 4;
 
-const int redLEDPin = 3;
-const int redLEDPin = 4;
+bool button = HIGH;
+
 void setup()
 {
   // Start serial
   Serial.begin(9600);
- 
+  // set pinMode for button
+  pinMode(buttonPin, INPUT_PULLUP);
+
   // Stepper Setups
   stepper.setRpm(6);  // The default is ~16.25rpm
   // Range: 6RPM - 14RPM when powered from Arduino
   //        2RPM - 24RPM when powered from other resources
   stepper.setTotalSteps(stepsPerRevolution); 
   // move one round
-  stepper.newMove(true, stepsPerRevolution); 
-  pinMode(buttonPin, INPUT_PULLUP);
-  pinMode(redLEDPin, OUTPUT);
-  pinMode(greenLEDPin, OUTPUT);
+  stepper.newMove(moveClockwise, stepsPerRevolution);
 }
 
 void loop() {
-  // this is necessary to keep in the loop with newMove()
-
-  // we can now do other things, like digitalRead()/analogRead() in the loop because newMove doesn't stop the process
-  buttonValue = digitalRead(buttonPin);
-
-  if (buttonValue) {
-    
-      stepper.run();
-  } else {
-      stepper.stop();
-  }
-  //Serial.println(buttonValue);
-
+  button = digitalRead(buttonPin);
   stepsLeft = stepper.getStepsLeft();
+
+  if (button) { // if button is not pressed
+    stepper.run(); // keep the stepper moving
+  } else { // if button is pressed
+    stepper.stop();
+    digitalWrite(redLedPin, LOW);
+    digitalWrite(greenLedPin, LOW);
+  }
+
   // if the current move is done...
   if (stepsLeft == 0){
-    Serial.println("0");
     // let's start a new move in the reverse direction
     moveClockwise = !moveClockwise; // reverse direction
     stepper.newMove(moveClockwise, stepsPerRevolution/3); // move 120 degrees from current position
-  } 
+  } else {
+    Serial.println(".");
+    if (!moveClockwise) {
+      digitalWrite(redLedPin, HIGH);
+      digitalWrite(greenLedPin, LOW);
+    } else {
+      digitalWrite(greenLedPin, HIGH);
+      digitalWrite(redLedPin, LOW);
+    }
+  }
 
 }

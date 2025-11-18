@@ -20,29 +20,16 @@ void setup() {
   stepper.setRpm(10);  // the default is ~16.25rpm
   // Range: 6RPM - 14RPM when powered from Arduino
   //        2RPM - 24RPM when powered from other resources
-
-  stepper.setTotalSteps(1024); 
-
+  stepper.setTotalSteps(stepsPerRevolution); 
   Serial.begin(9600);
 }
 
 void loop() {
   
-  for (int i = 0; i < stepsPerRevolution; i++){
-      // let's move one step
-    stepper.step(moveClockwise);
-
-    int nStep = stepper.getStep(); // returns current miniStep position
-
-    // Log if it's divisible by 64...
-    if (nStep%64==0){ 
-      // let's print the position to the console
-      Serial.print("current step position: "); 
-      Serial.print(nStep);
-      Serial.println();
-    }
-  }
-
+  stepper.moveTo(moveClockwise, stepsPerRevolution/4);
+  stepper.moveTo(moveClockwise, stepsPerRevolution/2);
+  // change direction
+  moveClockwise = !moveClockwise;
   delay(1000);
 }
 
