@@ -1,7 +1,8 @@
 /*
 Use Serial.readString() to control on-board LED
+
 * use Serial.parseInt() for integer
-  but one needs Serial.read() directly after the parsing to solve the issue with extra 0 
+  one needs Serial.read() directly after the parsing to solve the issue with extra 0 caused by New Line
   // See: https://forum.arduino.cc/t/serial-parseint-extra-zero-problem/522852
 */
 
@@ -21,6 +22,7 @@ void loop() {
     String str = Serial.readString();  // read until timeout
 
     str.trim();                        // remove any \r \n whitespace at the end of the String
+    // or select "No Line Ending" instead of "New Line" inside Serial Monitor
     
     Serial.print("Data Input: ");
     Serial.println(str);
