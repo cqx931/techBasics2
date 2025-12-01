@@ -220,6 +220,7 @@ digitalRead()
 - Connect the touch sensor to your Arduino
 - Read from it and print the result in Serial with a 115200 baud rate
 - Read the result from Python, mode 1 (Continuous Reading)
+* Try analogRead() with a potentiometer
 
 ---
 #### Exercise 2: Commands from Python
