@@ -171,6 +171,16 @@ https://felixfisgus.de/work/016_smartfairytale
 -> <b>Final project submission</b>
 
 ---
+##### Where to shop
+- Amazon
+- Ebay
+- [Reichelt](https://www.reichelt.de/)
+- [BerryBase](https://www.berrybase.de/): based in Berlin
+- [Pollin](https://www.pollin.de/): sometimes have cheap weird things
+- [Conrad](https://www.conrad.de/)
+- [AliExpress](https://de.aliexpress.com/?gatewayAdapt=glo2deu): shipped from China
+
+---
 #### Evaluation Criteria (10/12)
 - Technical skills: programming and physical computing
 - Documentation: photos, process, iterations
