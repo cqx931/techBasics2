@@ -6,7 +6,7 @@ _class:
   - lead
 footer: 06.01.26 | Qianxun Chen | Technical Basics II
 _footer: ""
-paginate: false
+paginate: true
 _paginate: false
 theme: uncover
 size: 16:9
@@ -48,6 +48,9 @@ Lecturer: Qianxun Chen
 ---
 #### Multiplexing
 A technique used to control or read from multiple inputs/outputs using only a few microcontroller pins 
+* individually addressable
+
+![bg right width:500px](images/led_cube.webp) 
 
 ---
 #### 74HC595
@@ -115,7 +118,7 @@ void loop() {
 ---
 #### Challenge
 
-How to make the LED to blink between two patterns?
+How to make the LEDs to blink between two patterns?
 
 <!-- Break -->
 
@@ -133,6 +136,24 @@ How to make the LED to blink between two patterns?
 ---
 #### Exercise 2
 Binary Counter with shift register
+0 -> 0
+1 -> 1
+2 -> 10
+3 -> 11
+4 -> 100
+...
+
+---
+#### Challenge 2
+
+How to make the LEDs to move in a circular manner? 
+00000011
+00000110
+...
+11000000
+10000001
+
+(Think about how to move it first towards the left, <br>then towards the right)
 
 ---
 #### Exercise 3
@@ -148,6 +169,17 @@ Binary Counter with shift register
 
 - Due to current constraints, it is okay to power multiple shift registers if the LEDs do not all light up simultaneously
 - If more lights are needed at one time, it is better to power the shift registers from an external 5V power supply
+
+---
+#### Challenge 3
+
+How to flip the bits?
+Ex:00001111 -> 11110000
+
+Think about it first with 2 bits
+01 -> 10
+00 -> 11
+11 -> 00
 
 ---
 ### Youtube Video
