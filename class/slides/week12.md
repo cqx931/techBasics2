@@ -6,7 +6,7 @@ _class:
   - lead
 footer: 13.01.26 | Qianxun Chen | Technical Basics II
 _footer: ""
-paginate: true
+paginate: false
 _paginate: false
 theme: uncover
 size: 16:9
@@ -100,10 +100,10 @@ Notice that the vcc/gnd are symmetrical/ protection
 - To protect the backlight, we can add a 220 ohm resistor between Anode and 5v
 - Library: LiquidCrystal is already pre-installed 
 - Potentiometer to adjust screen brightness
-- [Code]()
+- [Code](https://github.com/cqx931/techBasics2/blob/main/Week12/1_basic_lcd/1_basic_lcd.ino)
 ![bg right width:500px](images/lcd_connections.png)
 
-<!-- check 7-segment display module number for elegoo, get one more 74HC595 from office -->
+<!-- check 7-segment display module number for elegoo, get one more 74HC595 and one remote from the other kit -->
 
 ---
 <div class="columns">
@@ -175,7 +175,7 @@ lcd.write(byte(0)); //byte(0) is the  Heart character
 
 #### Exercise 2: LCD + I2C
 - Install Libraries: Wire and LiquidCrystal_I2C
-- [Code]()
+- [Code](https://github.com/cqx931/techBasics2/blob/main/Week12/2_I2C_lcd/2_I2C_lcd.ino)
 ```cpp
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
@@ -262,8 +262,8 @@ when a button is pressed: one column will go low -> col
 #### Exercise 3: Keypad Input + LCD(I2C)
 - Add keypad on top of the LCD connected with I2C
 ![right bg width:350px](images/keypad_connections.png)
-- Install the Keypad library + get the [Code for Keypad]()
-- Now you can try to use the LCD to show the input from the keypad!
+- Install the Keypad library + get the [Code for Keypad](https://github.com/cqx931/techBasics2/blob/main/Week12/3_keypad/3_keypad.ino)
+- Now you can change the code to let LCD show the input from the keypad!
 ---
 #### Project Checkups
 
