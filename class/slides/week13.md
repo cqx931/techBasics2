@@ -82,6 +82,7 @@ Anode - B
 ![bg right width:600px](images/4_digit_7_seg.png)
 - 4-digit 7-segent display
 - 3461BS (Common Annode)
+- Elegoo: 5641AS(Common Cathod)
 
 ---
 
