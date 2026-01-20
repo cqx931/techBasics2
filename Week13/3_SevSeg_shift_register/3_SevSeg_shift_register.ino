@@ -21,8 +21,6 @@ true /* Digits are connected to Arduino directly
       */
 );
 
-int deciSeconds = 0;
-
 void setup() {
   byte numDigits = 4;
   // Digit 1-4, change the order to 13,12,11,10 if you have 5641AS
@@ -42,18 +40,6 @@ void setup() {
 }
 
 void loop() {
-  long timer = millis();
-  
-  if (millis() - timer >= 100) {
-    timer += 100;
-    deciSeconds++; // 100 milliSeconds is equal to 1 deciSecond
-    
-    // Reset to 0 after counting for 1000 seconds.
-    if (deciSeconds == 10000) { 
-      deciSeconds=0;
-    }
-    sevsegshift.setNumber(deciSeconds, 1);
-  }
-
+  sevsegshift.setNumber(1234);
   sevsegshift.refreshDisplay(); // Must run repeatedly
 }
