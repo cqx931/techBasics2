@@ -12,7 +12,7 @@ void setup(){
     byte segmentPins[] = {2, 3, 4, 5, 6, 7, 8, 9}; // pin A-G & DP
     byte hardwareConfig = COMMON_CATHODE; 
 
-    bool resistorsOnSegments = false;
+    bool resistorsOnSegments = true; // This needs to be on true for single digit to work
 
     sevseg.begin(hardwareConfig, numDigits, digitPins, segmentPins, resistorsOnSegments);
     sevseg.setBrightness(90);
